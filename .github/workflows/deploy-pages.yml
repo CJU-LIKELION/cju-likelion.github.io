@@ -3,7 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - dev
+      - main
+      - fix/github-pages-white-screen-v2
   workflow_dispatch:
 
 permissions:
