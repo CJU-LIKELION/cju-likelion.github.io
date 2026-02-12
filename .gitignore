@@ -121,6 +121,9 @@ web_modules/
 # Output of 'npm pack'
 *.tgz
 
+# npm lockfile (project uses Bun lockfile)
+package-lock.json
+
 # Yarn Integrity file
 .yarn-integrity
 
