@@ -23,14 +23,24 @@ function getStoredTheme(): Theme | null {
   return stored === "dark" || stored === "light" ? stored : null;
 }
 
+function getInitialTheme(): Theme {
+  if (typeof window === "undefined") {
+    return "light";
+  }
+
+  if (document.documentElement.classList.contains("dark")) {
+    return "dark";
+  }
+
+  const stored = getStoredTheme();
+  return stored ?? getSystemTheme();
+}
+
 export function useTheme() {
   const [hasStoredPreference, setHasStoredPreference] = useState(
     () => getStoredTheme() !== null,
   );
-  const [theme, setThemeState] = useState<Theme>(() => {
-    const stored = getStoredTheme();
-    return stored ?? getSystemTheme();
-  });
+  const [theme, setThemeState] = useState<Theme>(() => getInitialTheme());
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", theme === "dark");

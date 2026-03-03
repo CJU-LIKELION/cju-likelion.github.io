@@ -1,9 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { navigationItems } from "@/content/landing";
 import { cn } from "@/lib/utils";
 
 import { ThemeToggle } from "./ThemeToggle";
+
+const FOCUSABLE_SELECTOR =
+  "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])";
 
 type SiteHeaderProps = {
   activeId: string;
@@ -31,6 +34,7 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
 
   useEffect(() => {
     if (!isMenuOpen) {
+      previousFocusRef.current?.focus();
       return;
     }
 
@@ -40,24 +44,10 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
       return;
     }
 
-    const focusables = panel.querySelectorAll<HTMLElement>(
-      "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])",
+    const focusables = Array.from(
+      panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR),
     );
     focusables[0]?.focus();
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (isMenuOpen) {
-      return;
-    }
-
-    previousFocusRef.current?.focus();
-  }, [isMenuOpen]);
-
-  useEffect(() => {
-    if (!isMenuOpen) {
-      return;
-    }
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -70,16 +60,8 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
         return;
       }
 
-      const panel = panelRef.current;
-      if (!panel) {
-        return;
-      }
-
-      const focusables = panel.querySelectorAll<HTMLElement>(
-        "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])",
-      );
-
       if (focusables.length === 0) {
+        event.preventDefault();
         return;
       }
 
@@ -97,11 +79,10 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
     };
 
     const onPointerDown = (event: MouseEvent | TouchEvent) => {
-      const panel = panelRef.current;
       const toggleButton = toggleButtonRef.current;
       const target = event.target as Node;
 
-      if (!panel || panel.contains(target) || toggleButton?.contains(target)) {
+      if (panel.contains(target) || toggleButton?.contains(target)) {
         return;
       }
 
@@ -119,10 +100,13 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
     };
   }, [isMenuOpen]);
 
-  const handleNavigate = (id: string) => {
-    onNavigate(id);
-    setIsMenuOpen(false);
-  };
+  const handleNavigate = useCallback(
+    (id: string) => {
+      onNavigate(id);
+      setIsMenuOpen(false);
+    },
+    [onNavigate],
+  );
 
   return (
     <header
@@ -192,7 +176,7 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
         ref={panelRef}
         data-testid="mobile-nav-panel"
         className={cn(
-          "border-t border-border bg-background/95 px-5 py-3 md:hidden",
+          "border-t border-border bg-background/90 px-5 py-3 backdrop-blur md:hidden",
           isMenuOpen ? "block" : "hidden",
         )}
       >
