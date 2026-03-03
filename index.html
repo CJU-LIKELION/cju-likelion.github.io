@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <link
@@ -8,7 +8,25 @@
       href="%BASE_URL%cju-likelion-symbol.svg"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>temp-vite</title>
+    <meta
+      name="description"
+      content="청주대학교 멋쟁이사자처럼 14기 모집 랜딩 페이지. 트랙 소개, 운영진, 커리큘럼, 연간 일정, 지원 링크를 제공합니다."
+    />
+    <script>
+      (function () {
+        try {
+          const stored = localStorage.getItem("theme");
+          const prefersDark =
+            window.matchMedia &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches;
+          const isDark = stored ? stored === "dark" : prefersDark;
+          document.documentElement.classList.toggle("dark", isDark);
+        } catch {
+          // ignore
+        }
+      })();
+    </script>
+    <title>청주대학교 멋쟁이사자처럼 14기 | LIKELION CJU</title>
   </head>
 
   <body>
