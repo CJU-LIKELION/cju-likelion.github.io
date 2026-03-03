@@ -13,7 +13,7 @@ export function DotNav({ activeId, onNavigate }: DotNavProps) {
         {navigationItems.map((item) => {
           const isActive = item.id === activeId;
           return (
-            <li key={item.id}>
+            <li key={item.id} className="flex h-4 w-4 items-center justify-center">
               <a
                 href={`#${item.id}`}
                 aria-current={isActive ? "true" : undefined}
@@ -22,12 +22,18 @@ export function DotNav({ activeId, onNavigate }: DotNavProps) {
                   onNavigate(item.id);
                 }}
                 className={cn(
-                  "block rounded-full transition-all duration-200",
-                  isActive
-                    ? "h-4 w-4 bg-primary"
-                    : "h-2 w-2 bg-muted-foreground hover:bg-foreground/70",
+                  "group flex h-4 w-4 items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
                 )}
               >
+                <span
+                  aria-hidden="true"
+                  className={cn(
+                    "h-2 w-2 rounded-full bg-muted-foreground transition-all duration-200",
+                    isActive
+                      ? "bg-primary scale-200"
+                      : "scale-100 group-hover:bg-foreground/70",
+                  )}
+                />
                 <span className="sr-only">{item.label}</span>
               </a>
             </li>

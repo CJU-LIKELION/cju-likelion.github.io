@@ -129,7 +129,7 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
       data-testid="site-header"
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors",
-        isScrolled
+        isScrolled || isMenuOpen
           ? "border-b border-border bg-background/90 backdrop-blur"
           : "border-b border-transparent bg-background/60",
       )}
@@ -192,7 +192,7 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
         ref={panelRef}
         data-testid="mobile-nav-panel"
         className={cn(
-          "border-t border-border px-5 py-3 md:hidden",
+          "border-t border-border bg-background/95 px-5 py-3 md:hidden",
           isMenuOpen ? "block" : "hidden",
         )}
       >
