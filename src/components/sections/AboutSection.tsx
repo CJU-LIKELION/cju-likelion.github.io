@@ -5,7 +5,7 @@ export function AboutSection() {
   return (
     <section id="about" className="scroll-mt-16 py-24 md:py-32" >
       <div className="relative mb-16 h-[300px] w-full overflow-hidden md:h-[400px]">
-        <img src={aboutContent.imageUrl} alt="Team Collaboration" className="h-full w-full object-cover" />
+        <img src={aboutContent.imageUrl} alt={aboutContent.imageAlt} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent dark:from-[#050505] dark:via-[#050505]/70" />
         <div className="absolute inset-0 bg-gradient-to-r from-white/80 to-transparent dark:from-[#050505]/80" />
 

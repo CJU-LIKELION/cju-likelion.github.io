@@ -12,6 +12,102 @@ export type NavigationItem = {
   label: string;
 };
 
+type IntroContent = {
+  badge: string;
+  titleTop: string;
+  titleAccent: string;
+  descriptionTop: string;
+  descriptionStrong: string;
+  descriptionBottom: string;
+  backgroundImage: string;
+  primaryCta: {
+    label: string;
+    targetId: SectionId;
+  };
+};
+
+type VisionContent = {
+  label: string;
+  titleTop: string;
+  titleAccent: string;
+  pillars: Array<{
+    label: string;
+    desc: string;
+  }>;
+};
+
+type AboutContent = {
+  label: string;
+  titleTop: string;
+  titleAccent: string;
+  imageUrl: string;
+  imageAlt: string;
+  paragraphs: string[];
+  stats: Array<{
+    value: string;
+    label: string;
+  }>;
+};
+
+type TeamContent = {
+  label: string;
+  titleTop: string;
+  titleAccent: string;
+  subtitle: string;
+  leaders: Array<{
+    name: string;
+    role: string;
+    desc: string;
+  }>;
+  departments: Array<{
+    name: string;
+    members: Array<{
+      name: string;
+      desc: string;
+    }>;
+  }>;
+};
+
+type CurriculumContent = {
+  label: string;
+  titleTop: string;
+  titleAccent: string;
+  groups: Array<{
+    name: string;
+    subtitle: string;
+    items: Array<{
+      title: string;
+      desc: string;
+    }>;
+  }>;
+};
+
+type RoadmapContent = {
+  label: string;
+  titleTop: string;
+  titleAccent: string;
+  items: Array<{
+    period: string;
+    title: string;
+    color: string;
+    items: string[];
+  }>;
+};
+
+type ApplyContent = {
+  recruitLabel: string;
+  titleTop: string;
+  titleAccent: string;
+  ctaLabel: string;
+  ctaHref: string;
+  period: string;
+};
+
+type SocialLink = {
+  label: string;
+  href: string;
+};
+
 export const navigationItems: NavigationItem[] = [
   { id: "intro", label: "Home" },
   { id: "vision", label: "Vision" },
@@ -24,7 +120,7 @@ export const navigationItems: NavigationItem[] = [
 
 export const sectionOrder: SectionId[] = navigationItems.map((item) => item.id);
 
-export const introContent = {
+export const introContent: IntroContent = {
   badge: "LIKELION 14TH GENERATION @ CJU",
   titleTop: "BUILD YOUR",
   titleAccent: "OWN UNIVERSE",
@@ -39,7 +135,7 @@ export const introContent = {
   },
 };
 
-export const visionContent = {
+export const visionContent: VisionContent = {
   label: "Our Vision",
   titleTop: "함께 자라나는 즐거움,",
   titleAccent: "실패를 두려워하지 않는 도전",
@@ -52,12 +148,13 @@ export const visionContent = {
   ],
 };
 
-export const aboutContent = {
+export const aboutContent: AboutContent = {
   label: "About Us",
   titleTop: "청주대학교",
   titleAccent: "멋쟁이사자처럼",
   imageUrl:
     "https://images.unsplash.com/photo-1646579886741-12b59840c63f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudHMlMjB0ZWFtJTIwY29sbGFib3JhdGlvbiUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NzIyOTc0NTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  imageAlt: "Team Collaboration",
   paragraphs: [
     "멋쟁이사자처럼 대학은 전국 70개 대학이 함께하는 AI/IT 연합 동아리입니다.",
     "IT와 AI에 대한 관심을 나누고, 함께 소통하며 성장합니다. 코딩이 처음인 분도, 이미 경험이 있는 분도 모두 환영합니다. 우리는 함께 배우고, 함께 만들고, 함께 성장하는 커뮤니티입니다.",
@@ -71,7 +168,7 @@ export const aboutContent = {
   ],
 };
 
-export const teamContent = {
+export const teamContent: TeamContent = {
   label: "Operating Staff",
   titleTop: "14TH",
   titleAccent: "CREW",
@@ -105,7 +202,7 @@ export const teamContent = {
   ],
 };
 
-export const curriculumContent = {
+export const curriculumContent: CurriculumContent = {
   label: "Original Class",
   titleTop: "CJU",
   titleAccent: "CURRICULUM",
@@ -155,7 +252,7 @@ export const curriculumContent = {
   ],
 };
 
-export const roadmapContent = {
+export const roadmapContent: RoadmapContent = {
   label: "Annual Schedule",
   titleTop: "14TH",
   titleAccent: "ROADMAP",
@@ -201,7 +298,7 @@ export const roadmapContent = {
   ],
 };
 
-export const applyContent = {
+export const applyContent: ApplyContent = {
   recruitLabel: "Now Recruiting",
   titleTop: "JOIN",
   titleAccent: "US",
@@ -210,7 +307,7 @@ export const applyContent = {
   period: "모집 기간: 2026.03.02 ~ 2026.03.09",
 };
 
-export const socialLinks = [
+export const socialLinks: SocialLink[] = [
   { label: "Instagram", href: "#" },
   { label: "Globe", href: "#" },
   { label: "Github", href: "#" },
