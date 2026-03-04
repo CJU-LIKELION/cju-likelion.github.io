@@ -1,23 +1,64 @@
 import { Reveal } from "@/components/motion/Reveal";
 import { teamContent } from "@/content/landing";
 
+function MemberCard({ name, role, desc }: { name: string; role?: string; desc: string }) {
+  return (
+    <article className="group rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-[#FF4D00]/30 dark:border-white/5 dark:bg-white/[0.02]">
+      <div className="mb-3 flex items-center gap-3">
+        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FF4D00]/10 text-[#FF4D00]">
+          <span className="text-xs">*</span>
+        </div>
+        <div>
+          <h4 className="text-sm text-foreground dark:text-white">{name}</h4>
+          {role ? <p className="text-xs text-[#FF4D00]">{role}</p> : null}
+        </div>
+      </div>
+      <p className="text-xs leading-relaxed text-muted-foreground dark:text-gray-500">{desc}</p>
+    </article>
+  );
+}
+
 export function TeamSection() {
   return (
-    <section id="team" className="scroll-mt-16 bg-card px-5 py-24">
+    <section id="team" className="min-h-screen scroll-mt-16 bg-background px-5 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <h2 className="text-3xl font-black md:text-5xl">{teamContent.title}</h2>
-          <p className="mt-3 text-muted-foreground">{teamContent.description}</p>
+          <div className="mb-16 text-center">
+            <span className="mb-4 block text-xs tracking-[0.3em] text-[#FF4D00] uppercase">
+              {teamContent.label}
+            </span>
+            <h2 className="mb-4 text-3xl text-foreground dark:text-white md:text-5xl">
+              {teamContent.titleTop}{" "}
+              <span className="bg-gradient-to-r from-[#FF4D00] to-[#FF8C00] bg-clip-text text-transparent">
+                {teamContent.titleAccent}
+              </span>
+            </h2>
+            <p className="mx-auto max-w-md text-sm text-muted-foreground dark:text-gray-500">{teamContent.subtitle}</p>
+          </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {teamContent.members.map((member) => (
+        <div className="mx-auto mb-12 grid max-w-xl gap-4 md:grid-cols-2">
+          {teamContent.leaders.map((member) => (
             <Reveal key={`${member.role}-${member.name}`}>
-              <article className="rounded-2xl border border-border bg-background/70 p-5">
-                <p className="text-xs tracking-[0.2em] text-primary uppercase">{member.role}</p>
-                <h3 className="mt-2 text-xl font-bold text-foreground">{member.name}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{member.part}</p>
-              </article>
+              <MemberCard name={member.name} role={member.role} desc={member.desc} />
+            </Reveal>
+          ))}
+        </div>
+
+        <div className="grid gap-8 md:grid-cols-3">
+          {teamContent.departments.map((department) => (
+            <Reveal key={department.name}>
+              <section>
+                <div className="mb-4 flex items-center gap-2 border-b border-border pb-2 dark:border-white/5">
+                  <span className="text-xs text-[#FF4D00]">*</span>
+                  <h3 className="text-sm tracking-wider text-foreground dark:text-white">{department.name}</h3>
+                </div>
+                <div className="space-y-3">
+                  {department.members.map((member) => (
+                    <MemberCard key={member.name} name={member.name} desc={member.desc} />
+                  ))}
+                </div>
+              </section>
             </Reveal>
           ))}
         </div>

@@ -5,17 +5,32 @@ export function IntroSection() {
   return (
     <section
       id="intro"
-      className="relative min-h-screen scroll-mt-16 overflow-hidden bg-background px-5 pb-20 pt-28"
+      className="relative flex min-h-screen items-center justify-center scroll-mt-16 overflow-hidden bg-background"
     >
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,77,0,0.15),transparent_45%)]" />
-      <div className="pointer-events-none absolute inset-0 [background-image:linear-gradient(to_right,transparent_0,transparent_39px,rgba(255,255,255,0.04)_40px),linear-gradient(to_bottom,transparent_0,transparent_39px,rgba(255,255,255,0.04)_40px)] [background-size:40px_40px]" />
+      <div className="absolute inset-0 z-0">
+        <img
+          src={introContent.backgroundImage}
+          alt="Coding Background"
+          className="h-full w-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/45 to-white dark:from-[#050505]/60 dark:via-[#050505]/40 dark:to-[#050505]" />
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,77,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,77,0,0.3) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+          }}
+        />
+      </div>
 
-      <div className="mx-auto max-w-6xl">
-        <Reveal className="relative z-10">
-          <p className="mb-4 text-xs tracking-[0.25em] text-primary uppercase">
+      <div className="relative z-10 mx-[0px] my-[50px] flex flex-col items-center px-[24px] py-[50px] text-center">
+        <Reveal>
+          <span className="mb-8 inline-block rounded-full border border-[#FF4D00]/30 px-4 py-1.5 text-xs tracking-[0.25em] text-[#FF4D00] uppercase">
             {introContent.badge}
-          </p>
-          <h1 className="text-4xl font-black tracking-tight text-foreground md:text-7xl">
+          </span>
+
+          <h1 className="mb-8 text-5xl tracking-tight text-foreground dark:text-white sm:text-6xl md:text-8xl lg:text-9xl">
             {introContent.titleTop}
             <br />
             <span className="bg-gradient-to-r from-[var(--brand-500)] to-[var(--brand-400)] bg-clip-text text-transparent">
@@ -23,26 +38,29 @@ export function IntroSection() {
             </span>
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            {introContent.description}
+          <p className="mx-auto mb-12 max-w-xl text-base leading-relaxed text-muted-foreground dark:text-gray-400 sm:text-lg md:text-xl">
+            {introContent.descriptionTop}
+            <br />
+            <span className="text-foreground dark:text-white">{introContent.descriptionStrong}</span>
+            {introContent.descriptionBottom}
           </p>
 
-          <div className="mt-8 flex flex-wrap gap-3">
+          <div className="mb-20 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href={introContent.primaryCta.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex rounded-full bg-primary px-6 py-3 text-sm font-bold text-primary-foreground"
+              href={`#${introContent.primaryCta.targetId}`}
+              className="inline-flex cursor-pointer rounded-full bg-[#FF4D00] px-8 py-3.5 text-sm tracking-wider text-white uppercase transition-all duration-300 hover:bg-[#FF6A2B] hover:shadow-lg hover:shadow-[#FF4D00]/20"
             >
               {introContent.primaryCta.label}
             </a>
-            <a
-              href={`#${introContent.secondaryCta.targetId}`}
-              className="inline-flex rounded-full border border-border bg-card px-6 py-3 text-sm font-semibold text-card-foreground"
-            >
-              {introContent.secondaryCta.label}
-            </a>
           </div>
+
+          <a
+            href="#vision"
+            className="flex cursor-pointer flex-col items-center text-muted-foreground dark:text-gray-500 transition-colors hover:text-[#FF4D00]"
+          >
+            <span className="mb-2 text-[10px] tracking-[0.3em] uppercase">Scroll Down</span>
+            <span className="text-sm">v</span>
+          </a>
         </Reveal>
       </div>
     </section>
