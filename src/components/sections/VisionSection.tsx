@@ -2,8 +2,9 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Telescope, BookOpen, Share2, Wrench } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { visionContent } from "@/content/landing";
+import type { VisionPillarLabel } from "@/content/landing";
 
-const PILLAR_ICONS: Record<string, LucideIcon> = {
+const PILLAR_ICONS: Record<VisionPillarLabel, LucideIcon> = {
   Connection: Share2,
   Exploration: Telescope,
   Synergy: BookOpen,
@@ -34,7 +35,7 @@ export function VisionSection() {
 
           <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-4">
             {visionContent.pillars.map((pillar) => {
-              const Icon = PILLAR_ICONS[pillar.label] || Telescope;
+              const Icon = PILLAR_ICONS[pillar.label];
               return (
                 <Reveal key={pillar.label} className="flex flex-col items-center text-center">
                   <div className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-muted-foreground dark:border-gray-700 dark:bg-[#0A0A0A] dark:text-gray-500 transition-all duration-300">
