@@ -1,17 +1,23 @@
 import { navigationItems } from "@/content/landing";
 import { cn } from "@/lib/utils";
 
+const ACTIVE_NAV_ID_MAP: Record<string, string> = {
+  "cup-to-lion": "curriculum",
+};
+
 type DotNavProps = {
   activeId: string;
   onNavigate: (id: string) => void;
 };
 
 export function DotNav({ activeId, onNavigate }: DotNavProps) {
+  const activeNavId = ACTIVE_NAV_ID_MAP[activeId] || activeId;
+
   return (
     <nav className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
       <ul className="flex flex-col gap-3">
         {navigationItems.map((item) => {
-          const isActive = item.id === activeId;
+          const isActive = item.id === activeNavId;
           return (
             <li key={item.id} className="flex h-4 w-4 items-center justify-center">
               <a

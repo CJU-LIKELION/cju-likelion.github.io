@@ -5,6 +5,10 @@ import { cn } from "@/lib/utils";
 
 import { ThemeToggle } from "./ThemeToggle";
 
+const ACTIVE_NAV_ID_MAP: Record<string, string> = {
+  "cup-to-lion": "curriculum",
+};
+
 const FOCUSABLE_SELECTOR =
   "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])";
 
@@ -108,6 +112,8 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
     [onNavigate],
   );
 
+  const activeNavId = ACTIVE_NAV_ID_MAP[activeId] || activeId;
+
   return (
     <header
       data-testid="site-header"
@@ -132,7 +138,7 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
 
         <nav className="hidden items-center gap-6 md:flex" aria-label="Primary">
           {navigationItems.map((item) => {
-            const isActive = item.id === activeId;
+            const isActive = item.id === activeNavId;
             return (
               <a
                 key={item.id}
@@ -182,7 +188,7 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
       >
         <nav className="flex flex-col gap-2" aria-label="Mobile primary">
           {navigationItems.map((item) => {
-            const isActive = item.id === activeId;
+            const isActive = item.id === activeNavId;
             return (
               <a
                 key={item.id}

@@ -4,6 +4,7 @@ export type SectionId =
   | "about"
   | "team"
   | "curriculum"
+  | "cup-to-lion"
   | "roadmap"
   | "apply";
 
@@ -94,6 +95,20 @@ type RoadmapContent = {
   }>;
 };
 
+type CupToLionContent = {
+  label: string;
+  titleTop: string;
+  titleAccent: string;
+  descriptionTop: string;
+  descriptionBottom: string;
+  steps: Array<{
+    step: string;
+    title: string;
+    desc: string;
+    color: string;
+  }>;
+};
+
 type ApplyContent = {
   recruitLabel: string;
   titleTop: string;
@@ -118,7 +133,16 @@ export const navigationItems: NavigationItem[] = [
   { id: "apply", label: "Apply" },
 ];
 
-export const sectionOrder: SectionId[] = navigationItems.map((item) => item.id);
+export const sectionOrder: SectionId[] = [
+  "intro",
+  "vision",
+  "about",
+  "team",
+  "curriculum",
+  "cup-to-lion",
+  "roadmap",
+  "apply",
+];
 
 export const introContent: IntroContent = {
   badge: "LIKELION 14TH GENERATION @ CJU",
@@ -294,6 +318,35 @@ export const roadmapContent: RoadmapContent = {
       title: "Expansion",
       color: "#A78BFA",
       items: ["연합 해커톤 (충청권)", "기업 연계 프로젝트", "최종 성과 공유회 (Demoday)"],
+    },
+  ],
+};
+
+export const cupToLionContent: CupToLionContent = {
+  label: "Original Curriculum",
+  titleTop: "CUP TO",
+  titleAccent: "LION",
+  descriptionTop: "총 3가지의 Step으로 이루어진 청주대학교 멋쟁이사자처럼만의 자체 커리큘럼입니다.",
+  descriptionBottom:
+    "분석부터 아이디어 구조화, 미니 프로덕트 구현까지 단계적으로 경험하며 해커톤을 준비하는 청주대학교 멋쟁이사자처럼만의 성장 커리큘럼입니다.",
+  steps: [
+    {
+      step: "Step 1",
+      title: "실제 앱 분석 및 연구",
+      desc: "시중에 나와있는 앱들을 다양한 관점으로 분석하고 공유합니다.",
+      color: "#4ADE80",
+    },
+    {
+      step: "Step 2",
+      title: "랜덤 아이디어 구조화",
+      desc: "랜덤으로 주어진 주제에 맞게 아이디어를 구조화합니다.",
+      color: "#60A5FA",
+    },
+    {
+      step: "Step 3",
+      title: "미니 Product 구현",
+      desc: "Step 1, Step 2를 기반으로 미니 Product를 구현합니다.",
+      color: "#FF8C00",
     },
   ],
 };
