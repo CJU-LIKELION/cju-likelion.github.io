@@ -130,7 +130,7 @@ export const introContent: IntroContent = {
   descriptionTop: "\"당신의 상상, 세상 밖으로!\"",
   descriptionBottom: "전국 80여개 대학이 함께하는 국내 최대 규모 IT 창업 동아리",
   backgroundImage:
-    "https://images.unsplash.com/photo-1738255654134-1877cb984a8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwY29kaW5nJTIwbGFwdG9wJTIwc2NyZWVuJTIwcHJvZ3JhbW1pbmd8ZW58MXx8fHwxNzcyMjk3NDU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    `${import.meta.env.BASE_URL}images/hackathon_12th_3.png`,
   primaryCta: {
     label: "지금 신청하기",
     targetId: "apply" as SectionId,
