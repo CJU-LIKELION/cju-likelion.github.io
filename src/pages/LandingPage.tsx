@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 
 import { AboutSection } from "@/components/sections/AboutSection";
 import { ApplySection } from "@/components/sections/ApplySection";
+import { CupToLionSection } from "@/components/sections/CupToLionSection";
 import { CurriculumSection } from "@/components/sections/CurriculumSection";
 import { IntroSection } from "@/components/sections/IntroSection";
 import { RoadmapSection } from "@/components/sections/RoadmapSection";
@@ -54,6 +55,7 @@ export function LandingPage() {
         <AboutSection />
         <TeamSection />
         <CurriculumSection />
+        <CupToLionSection />
         <RoadmapSection />
         <ApplySection />
       </main>

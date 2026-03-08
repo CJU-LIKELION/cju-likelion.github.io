@@ -6,7 +6,7 @@ export function ApplySection() {
   return (
     <section
       id="apply"
-      className="relative flex min-h-[80vh] flex-col items-center justify-center scroll-mt-16 px-5 py-32 text-center md:py-40"
+      className="relative flex min-h-[80vh] flex-col items-center justify-center px-5 py-32 text-center md:py-40"
     >
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FF4D00]/5 blur-[120px]" />
@@ -20,8 +20,8 @@ export function ApplySection() {
             <Sparkles className="h-4 w-4" />
           </div>
 
-          <h2 className="mb-4 text-4xl tracking-tight text-foreground dark:text-white sm:text-5xl md:text-7xl">
-            {applyContent.titleTop} <span className="bg-gradient-to-r from-[#FF4D00] to-[#FF8C00] bg-clip-text text-transparent">{applyContent.titleAccent}</span>
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground dark:text-white sm:text-5xl md:text-7xl">
+            {applyContent.titleTop} <span className="text-[#FF4D00]">{applyContent.titleAccent}</span>
           </h2>
 
           <a

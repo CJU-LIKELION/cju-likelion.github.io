@@ -6,7 +6,7 @@ export function IntroSection() {
   return (
     <section
       id="intro"
-      className="relative flex min-h-screen items-center justify-center scroll-mt-16 overflow-hidden bg-background"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background"
     >
       <div className="absolute inset-0 z-0">
         <img
@@ -31,10 +31,10 @@ export function IntroSection() {
             {introContent.badge}
           </span>
 
-          <h1 className="mb-8 text-5xl tracking-tight text-foreground dark:text-white sm:text-6xl md:text-8xl lg:text-9xl">
+          <h1 className="mb-8 text-5xl font-bold tracking-tight text-foreground dark:text-white sm:text-6xl md:text-8xl lg:text-9xl">
             {introContent.titleTop}
             <br />
-            <span className="bg-gradient-to-r from-[var(--brand-500)] to-[var(--brand-400)] bg-clip-text text-transparent">
+            <span className="text-[#FF4D00]">
               {introContent.titleAccent}
             </span>
           </h1>

@@ -13,16 +13,16 @@ const PHASE_ICONS: Record<string, LucideIcon> = {
 
 export function RoadmapSection() {
   return (
-    <section id="roadmap" className="relative scroll-mt-16 px-5 py-24 md:py-32">
+    <section id="roadmap" className="relative px-5 py-24 md:py-32">
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <div className="relative z-10 mb-16 text-center">
             <span className="mb-4 block text-xs tracking-[0.3em] text-[#FF4D00] uppercase">
               {roadmapContent.label}
             </span>
-            <h2 className="text-3xl text-foreground dark:text-white md:text-5xl">
+            <h2 className="text-3xl font-bold text-foreground dark:text-white md:text-5xl">
               {roadmapContent.titleTop}{" "}
-              <span className="bg-gradient-to-r from-[#FF4D00] to-[#FF8C00] bg-clip-text text-transparent">
+              <span className="text-[#FF4D00]">
                 {roadmapContent.titleAccent}
               </span>
             </h2>

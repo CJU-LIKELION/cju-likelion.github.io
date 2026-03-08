@@ -21,16 +21,16 @@ function MemberCard({ name, role, desc }: { name: string; role?: string; desc: s
 
 export function TeamSection() {
   return (
-    <section id="team" className="min-h-screen scroll-mt-16 bg-background px-5 py-24 md:py-32">
+    <section id="team" className="min-h-screen bg-background px-5 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">
             <span className="mb-4 block text-xs tracking-[0.3em] text-[#FF4D00] uppercase">
               {teamContent.label}
             </span>
-            <h2 className="mb-4 text-3xl text-foreground dark:text-white md:text-5xl">
+            <h2 className="mb-4 text-3xl font-bold text-foreground dark:text-white md:text-5xl">
               {teamContent.titleTop}{" "}
-              <span className="bg-gradient-to-r from-[#FF4D00] to-[#FF8C00] bg-clip-text text-transparent">
+              <span className="text-[#FF4D00]">
                 {teamContent.titleAccent}
               </span>
             </h2>

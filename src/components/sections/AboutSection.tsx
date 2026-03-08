@@ -3,7 +3,7 @@ import { aboutContent } from "@/content/landing";
 
 export function AboutSection() {
   return (
-    <section id="about" className="scroll-mt-16 py-24 md:py-32" >
+    <section id="about" className="pb-24 md:pb-32" >
       <div className="relative mb-16 h-[300px] w-full overflow-hidden md:h-[400px]">
         <img src={aboutContent.imageUrl} alt={aboutContent.imageAlt} className="h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent dark:from-[#050505] dark:via-[#050505]/70" />
@@ -13,10 +13,10 @@ export function AboutSection() {
           <span className="mb-3 block text-xs tracking-[0.3em] text-[#FF4D00] uppercase">
             {aboutContent.label}
           </span>
-          <h2 className="text-3xl text-foreground dark:text-white md:text-5xl">
+          <h2 className="text-3xl font-bold text-foreground dark:text-white md:text-5xl">
             {aboutContent.titleTop}
             <br />
-            <span className="bg-gradient-to-r from-[#FF4D00] to-[#FF8C00] bg-clip-text text-transparent">
+            <span className="text-[#FF4D00]">
               {aboutContent.titleAccent}
             </span>
           </h2>
