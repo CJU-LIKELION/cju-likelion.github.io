@@ -6,7 +6,7 @@ export function IntroSection() {
   return (
     <section
       id="intro"
-      className="relative flex min-h-screen items-center justify-center scroll-mt-16 overflow-hidden bg-background"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden bg-background"
     >
       <div className="absolute inset-0 z-0">
         <img

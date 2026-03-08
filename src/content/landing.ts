@@ -129,6 +129,7 @@ export const navigationItems: NavigationItem[] = [
   { id: "about", label: "About" },
   { id: "team", label: "Team" },
   { id: "curriculum", label: "Class" },
+  { id: "cup-to-lion", label: "Cup to Lion" },
   { id: "roadmap", label: "Schedule" },
   { id: "apply", label: "Apply" },
 ];

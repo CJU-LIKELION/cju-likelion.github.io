@@ -128,8 +128,8 @@ html.dark {
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 64px;
+  scroll-behavior: smooth;
 }
 
 @media (prefers-reduced-motion: reduce) {
