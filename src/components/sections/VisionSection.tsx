@@ -1,14 +1,13 @@
 import { Reveal } from "@/components/motion/Reveal";
-import { Telescope, BookOpen, Share2, Wrench, Flame } from "lucide-react";
+import { Telescope, BookOpen, Share2, Wrench } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { visionContent } from "@/content/landing";
 
 const PILLAR_ICONS: Record<string, LucideIcon> = {
-  Discover: Telescope,
-  Learn: BookOpen,
-  Share: Share2,
-  Build: Wrench,
-  Impact: Flame,
+  Connection: Share2,
+  Exploration: Telescope,
+  Synergy: BookOpen,
+  Creation: Wrench,
 };
 
 export function VisionSection() {
