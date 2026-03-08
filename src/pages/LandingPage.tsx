@@ -46,7 +46,7 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader activeId={activeId} onNavigate={handleNavigate} />
+      <SiteHeader onNavigate={handleNavigate} />
       <DotNav activeId={activeId} onNavigate={handleNavigate} />
 
       <main>
