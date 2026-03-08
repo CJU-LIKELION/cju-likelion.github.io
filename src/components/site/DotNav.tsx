@@ -25,7 +25,7 @@ export function DotNav({ activeId, onNavigate }: DotNavProps) {
               >
                 <span
                   className={cn(
-                    "absolute right-full mr-3 max-w-40 whitespace-normal text-right text-sm font-medium transition-all duration-300 break-keep [overflow-wrap:anywhere]",
+                    "absolute right-full mr-3 whitespace-nowrap text-sm font-medium transition-all duration-300",
                     isActive
                       ? "translate-x-0 opacity-100 text-foreground"
                       : "pointer-events-none translate-x-2 opacity-0 text-muted-foreground group-hover:translate-x-0 group-hover:opacity-100 group-hover:text-foreground/70"
