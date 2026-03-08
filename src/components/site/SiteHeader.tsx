@@ -3,8 +3,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { navigationItems } from "@/content/landing";
 import { cn } from "@/lib/utils";
 
-import { ThemeToggle } from "./ThemeToggle";
-
 const FOCUSABLE_SELECTOR =
   "a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])";
 
@@ -154,8 +152,6 @@ export function SiteHeader({ activeId, onNavigate }: SiteHeaderProps) {
         </nav>
 
         <div className="flex items-center gap-2">
-          <ThemeToggle />
-
           <button
             ref={toggleButtonRef}
             type="button"
