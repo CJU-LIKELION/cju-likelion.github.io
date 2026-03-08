@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const SECTION_IDS = ["intro", "vision", "about", "curriculum", "cup-to-lion", "roadmap", "apply"];
+const SECTION_IDS = ["intro", "vision", "about", "class", "curriculum", "roadmap", "apply"];
 const HEADER_HEIGHT = 64;
 
 test("sections exist", async ({ page }) => {
@@ -34,33 +34,11 @@ test("scrollspy sets aria-current on the active roadmap nav link", async ({ page
   await expect.poll(async () => roadmapNavLink.getAttribute("aria-current")).toBe("true");
 });
 
-test("mobile menu keeps focus trapped and closes on Escape", async ({ page }) => {
+test("dot navigation is hidden on mobile viewport", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
 
-  const toggle = page.getByTestId("mobile-nav-toggle");
-  const panel = page.getByTestId("mobile-nav-panel");
-
-  await toggle.click();
-  await expect(panel).toBeVisible();
-
-  const focusables = panel.locator("a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])");
-  const focusableCount = await focusables.count();
-  expect(focusableCount).toBeGreaterThan(0);
-
-  const firstFocusable = focusables.first();
-  const lastFocusable = focusables.nth(focusableCount - 1);
-
-  await lastFocusable.focus();
-  await page.keyboard.press("Tab");
-  await expect(firstFocusable).toBeFocused();
-
-  await page.keyboard.press("Shift+Tab");
-  await expect(lastFocusable).toBeFocused();
-
-  await page.keyboard.press("Escape");
-  await expect(panel).toBeHidden();
-  await expect(toggle).toBeFocused();
+  await expect(page.locator('nav[aria-label="Primary"]')).toBeHidden();
 });
 
 test.describe("reduced motion", () => {
@@ -108,28 +86,20 @@ test.describe("reduced motion", () => {
   });
 });
 
-test("theme toggle updates html.dark and localStorage.theme", async ({ page }) => {
-  await page.goto("/");
-
-  const before = await page.evaluate(() => document.documentElement.classList.contains("dark"));
-
-  await page.getByTestId("theme-toggle").click();
-
-  const after = await page.evaluate(() => document.documentElement.classList.contains("dark"));
-  expect(after).toBe(!before);
-
-  const storedTheme = await page.evaluate(() => localStorage.getItem("theme"));
-  expect(storedTheme).toBe(after ? "dark" : "light");
-});
-
-test("theme bootstrap applies stored dark mode on first render", async ({ page }) => {
-  await page.addInitScript(() => {
-    localStorage.setItem("theme", "dark");
-  });
-
+test("theme bootstrap follows prefers-color-scheme dark", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "dark" });
   await page.goto("/");
 
   await expect.poll(async () => {
     return page.evaluate(() => document.documentElement.classList.contains("dark"));
   }).toBe(true);
+});
+
+test("theme bootstrap follows prefers-color-scheme light", async ({ page }) => {
+  await page.emulateMedia({ colorScheme: "light" });
+  await page.goto("/");
+
+  await expect.poll(async () => {
+    return page.evaluate(() => document.documentElement.classList.contains("dark"));
+  }).toBe(false);
 });

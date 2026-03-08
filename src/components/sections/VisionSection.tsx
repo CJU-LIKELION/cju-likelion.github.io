@@ -44,7 +44,7 @@ export function VisionSection() {
                   <h3 className="mb-2 text-sm tracking-wider text-foreground dark:text-white uppercase transition-colors">
                     {pillar.label}
                   </h3>
-                  <p className="whitespace-normal text-xs leading-relaxed text-muted-foreground break-keep [overflow-wrap:anywhere] dark:text-gray-500">
+                  <p className="whitespace-normal text-xs leading-relaxed text-muted-foreground dark:text-gray-500">
                     {pillar.desc}
                   </p>
                 </Reveal>

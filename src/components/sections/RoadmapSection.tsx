@@ -33,9 +33,12 @@ export function RoadmapSection() {
           <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-border to-transparent dark:via-white/10 md:hidden" />
 
           <div className="relative z-10 space-y-8">
-            {roadmapContent.items.map((item, index) => (
-              <Reveal key={`${item.period}-${item.title}`}>
-                <article
+            {roadmapContent.items.map((item, index) => {
+              const Icon = PHASE_ICONS[item.title] || Flag;
+
+              return (
+                <Reveal key={`${item.period}-${item.title}`}>
+                  <article
                   className={`relative flex flex-col items-center gap-4 md:items-start md:gap-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                     }`}
                 >
@@ -72,10 +75,7 @@ export function RoadmapSection() {
                         color: item.color,
                       }}
                     >
-                      {(() => {
-                        const Icon = PHASE_ICONS[item.title] || Flag;
-                        return <Icon className="h-4 w-4" />;
-                      })()}
+                      <Icon className="h-4 w-4" />
                     </div>
                   </div>
 
@@ -105,9 +105,10 @@ export function RoadmapSection() {
                   </div>
 
                   <div className="hidden md:block md:w-[calc(50%-2rem)]" />
-                </article>
-              </Reveal>
-            ))}
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </div>
