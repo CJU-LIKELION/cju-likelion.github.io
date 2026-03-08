@@ -14,9 +14,10 @@ export function SiteFooter() {
   return (
     <footer className="w-full border-t border-border bg-background py-12 dark:border-white/5 dark:bg-[#050505]">
       <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-8 px-6 text-sm text-muted-foreground md:flex-row md:px-12 lg:px-24">
-        <h3 className="text-sm tracking-[0.15em] text-foreground dark:text-white">
-          LIKELION <span className="text-[#FF4D00]">@ CJU</span>
-        </h3>
+        <div className="flex items-center gap-2 font-black tracking-wide text-foreground dark:text-white md:flex-1">
+          <img src="/cju-likelion-logo.svg" alt="CJU Likelion" className="h-6 w-6" />
+          <span>CJU <span className="text-primary">LIKELION</span></span>
+        </div>
 
         <ul className="flex items-center gap-4">
           {socialLinks.map((item) => {
@@ -39,7 +40,7 @@ export function SiteFooter() {
           })}
         </ul>
 
-        <p className="text-[10px] tracking-wider text-muted-foreground dark:text-gray-700">
+        <p className="text-center text-[10px] tracking-wider text-muted-foreground dark:text-gray-700 md:flex-1 md:text-right">
           © {currentYear} LIKELION CJU. All rights reserved.
         </p>
       </div>

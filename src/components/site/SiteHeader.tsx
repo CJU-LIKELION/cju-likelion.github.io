@@ -38,9 +38,10 @@ export function SiteHeader({ onNavigate }: SiteHeaderProps) {
             event.preventDefault();
             onNavigate("intro");
           }}
-          className="font-black tracking-wide"
+          className="flex items-center gap-2 text-lg font-black tracking-wide"
         >
-          CJU <span className="text-primary">LIKELION</span>
+          <img src="/cju-likelion-logo.svg" alt="CJU Likelion" className="h-6 w-6" />
+          <span>CJU <span className="text-primary">LIKELION</span></span>
         </a>
       </div>
     </header>
