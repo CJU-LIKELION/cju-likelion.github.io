@@ -1,13 +1,12 @@
 import { expect, test } from "@playwright/test";
 
 const SECTION_IDS = ["intro", "vision", "about", "team", "curriculum", "roadmap", "apply"];
+const HEADER_HEIGHT = 64;
 
 test("sections exist", async ({ page }) => {
   await page.goto("/");
 
-  for (const id of SECTION_IDS) {
-    await expect(page.locator(`#${id}`)).toBeVisible();
-  }
+  await Promise.all(SECTION_IDS.map((id) => expect(page.locator(`#${id}`)).toBeVisible()));
 });
 
 test("header anchor offset keeps section visible under fixed header", async ({ page }) => {
@@ -15,21 +14,21 @@ test("header anchor offset keeps section visible under fixed header", async ({ p
 
   await expect.poll(async () => {
     return page.locator("#about").evaluate((el) => el.getBoundingClientRect().top);
-  }).toBeGreaterThanOrEqual(64);
+  }).toBeGreaterThanOrEqual(HEADER_HEIGHT);
 });
 
 test("scrollspy sets aria-current on the active roadmap nav link", async ({ page }) => {
   await page.goto("/");
 
-  await page.evaluate(() => {
+  await page.evaluate((headerHeight) => {
     const roadmap = document.getElementById("roadmap");
     if (!roadmap) {
       return;
     }
 
-    const y = roadmap.getBoundingClientRect().top + window.scrollY - 64;
+    const y = roadmap.getBoundingClientRect().top + window.scrollY - headerHeight;
     window.scrollTo({ top: Math.max(0, y), behavior: "auto" });
-  });
+  }, HEADER_HEIGHT);
 
   const roadmapNavLink = page.locator('nav[aria-label="Primary"] a[href="#roadmap"]');
   await expect.poll(async () => roadmapNavLink.getAttribute("aria-current")).toBe("true");
@@ -45,11 +44,19 @@ test("mobile menu keeps focus trapped and closes on Escape", async ({ page }) =>
   await toggle.click();
   await expect(panel).toBeVisible();
 
-  for (let i = 0; i < 10; i += 1) {
-    await page.keyboard.press("Tab");
-    const isFocusInsidePanel = await panel.evaluate((el) => el.contains(document.activeElement));
-    expect(isFocusInsidePanel).toBe(true);
-  }
+  const focusables = panel.locator("a[href], button:not([disabled]), [tabindex]:not([tabindex='-1'])");
+  const focusableCount = await focusables.count();
+  expect(focusableCount).toBeGreaterThan(0);
+
+  const firstFocusable = focusables.first();
+  const lastFocusable = focusables.nth(focusableCount - 1);
+
+  await lastFocusable.focus();
+  await page.keyboard.press("Tab");
+  await expect(firstFocusable).toBeFocused();
+
+  await page.keyboard.press("Shift+Tab");
+  await expect(lastFocusable).toBeFocused();
 
   await page.keyboard.press("Escape");
   await expect(panel).toBeHidden();
