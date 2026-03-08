@@ -2,8 +2,8 @@ export type SectionId =
   | "intro"
   | "vision"
   | "about"
+  | "class"
   | "curriculum"
-  | "cup-to-lion"
   | "roadmap"
   | "apply";
 
@@ -107,8 +107,8 @@ export const navigationItems: NavigationItem[] = [
   { id: "intro", label: "Home" },
   { id: "vision", label: "Vision" },
   { id: "about", label: "About" },
-  { id: "curriculum", label: "Class" },
-  { id: "cup-to-lion", label: "Cup to Lion" },
+  { id: "class", label: "Class" },
+  { id: "curriculum", label: "Curriculum" },
   { id: "roadmap", label: "Schedule" },
   { id: "apply", label: "Apply" },
 ];
@@ -117,8 +117,8 @@ export const sectionOrder: SectionId[] = [
   "intro",
   "vision",
   "about",
+  "class",
   "curriculum",
-  "cup-to-lion",
   "roadmap",
   "apply",
 ];
