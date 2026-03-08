@@ -12,6 +12,8 @@ export type NavigationItem = {
   label: string;
 };
 
+export type VisionPillarLabel = "Connection" | "Exploration" | "Synergy" | "Creation";
+
 type IntroContent = {
   badge: string;
   titleTop: string;
@@ -30,7 +32,7 @@ type VisionContent = {
   titleTop: string;
   titleAccent: string;
   pillars: Array<{
-    label: string;
+    label: VisionPillarLabel;
     desc: string;
   }>;
 };
