@@ -31,10 +31,10 @@ export function IntroSection() {
             {introContent.badge}
           </span>
 
-          <h1 className="mb-8 text-5xl tracking-tight text-foreground dark:text-white sm:text-6xl md:text-8xl lg:text-9xl">
+          <h1 className="mb-8 text-5xl font-bold tracking-tight text-foreground dark:text-white sm:text-6xl md:text-8xl lg:text-9xl">
             {introContent.titleTop}
             <br />
-            <span className="bg-gradient-to-r from-[var(--brand-500)] to-[var(--brand-400)] bg-clip-text text-transparent">
+            <span className="text-[#FF4D00]">
               {introContent.titleAccent}
             </span>
           </h1>

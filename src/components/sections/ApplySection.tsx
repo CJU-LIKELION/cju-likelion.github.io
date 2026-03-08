@@ -20,8 +20,8 @@ export function ApplySection() {
             <Sparkles className="h-4 w-4" />
           </div>
 
-          <h2 className="mb-4 text-4xl tracking-tight text-foreground dark:text-white sm:text-5xl md:text-7xl">
-            {applyContent.titleTop} <span className="bg-gradient-to-r from-[#FF4D00] to-[#FF8C00] bg-clip-text text-transparent">{applyContent.titleAccent}</span>
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground dark:text-white sm:text-5xl md:text-7xl">
+            {applyContent.titleTop} <span className="text-[#FF4D00]">{applyContent.titleAccent}</span>
           </h2>
 
           <a

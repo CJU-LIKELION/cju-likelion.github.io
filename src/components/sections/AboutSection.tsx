@@ -13,10 +13,10 @@ export function AboutSection() {
           <span className="mb-3 block text-xs tracking-[0.3em] text-[#FF4D00] uppercase">
             {aboutContent.label}
           </span>
-          <h2 className="text-3xl text-foreground dark:text-white md:text-5xl">
+          <h2 className="text-3xl font-bold text-foreground dark:text-white md:text-5xl">
             {aboutContent.titleTop}
             <br />
-            <span className="bg-gradient-to-r from-[#FF4D00] to-[#FF8C00] bg-clip-text text-transparent">
+            <span className="text-[#FF4D00]">
               {aboutContent.titleAccent}
             </span>
           </h2>
