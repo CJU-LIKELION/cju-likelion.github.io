@@ -106,6 +106,7 @@ type CupToLionContent = {
     title: string;
     desc: string;
     color: string;
+    icon: "search" | "shuffle" | "package";
   }>;
 };
 
@@ -336,18 +337,21 @@ export const cupToLionContent: CupToLionContent = {
       title: "실제 앱 분석 및 연구",
       desc: "시중에 나와있는 앱들을 다양한 관점으로 분석하고 공유합니다.",
       color: "#4ADE80",
+      icon: "search",
     },
     {
       step: "Step 2",
       title: "랜덤 아이디어 구조화",
       desc: "랜덤으로 주어진 주제에 맞게 아이디어를 구조화합니다.",
       color: "#60A5FA",
+      icon: "shuffle",
     },
     {
       step: "Step 3",
       title: "미니 Product 구현",
       desc: "Step 1, Step 2를 기반으로 미니 Product를 구현합니다.",
       color: "#FF8C00",
+      icon: "package",
     },
   ],
 };
