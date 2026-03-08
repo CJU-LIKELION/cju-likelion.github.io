@@ -14,7 +14,7 @@ const TRACK_ICONS: Record<string, LucideIcon> = {
 
 export function CurriculumSection() {
   return (
-    <section id="curriculum" className="min-h-screen scroll-mt-16 bg-background dark:bg-[#0A0A0A] px-5 py-24 md:py-32">
+    <section id="curriculum" className="min-h-screen bg-background dark:bg-[#0A0A0A] px-5 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">

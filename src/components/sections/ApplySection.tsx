@@ -6,7 +6,7 @@ export function ApplySection() {
   return (
     <section
       id="apply"
-      className="relative flex min-h-[80vh] scroll-mt-16 flex-col items-center justify-center px-5 py-32 text-center md:py-40"
+      className="relative flex min-h-[80vh] flex-col items-center justify-center px-5 py-32 text-center md:py-40"
     >
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#FF4D00]/5 blur-[120px]" />

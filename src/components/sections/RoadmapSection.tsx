@@ -13,7 +13,7 @@ const PHASE_ICONS: Record<string, LucideIcon> = {
 
 export function RoadmapSection() {
   return (
-    <section id="roadmap" className="relative scroll-mt-16 px-5 py-24 md:py-32">
+    <section id="roadmap" className="relative px-5 py-24 md:py-32">
       <div className="mx-auto max-w-4xl">
         <Reveal>
           <div className="relative z-10 mb-16 text-center">

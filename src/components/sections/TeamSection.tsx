@@ -21,7 +21,7 @@ function MemberCard({ name, role, desc }: { name: string; role?: string; desc: s
 
 export function TeamSection() {
   return (
-    <section id="team" className="min-h-screen scroll-mt-16 bg-background px-5 py-24 md:py-32">
+    <section id="team" className="min-h-screen bg-background px-5 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mb-16 text-center">
