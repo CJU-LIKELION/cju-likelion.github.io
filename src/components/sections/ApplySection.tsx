@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { Sparkles, ArrowRight } from "lucide-react";
 import { applyContent } from "@/content/landing";
 
 export function ApplySection() {
@@ -14,9 +15,9 @@ export function ApplySection() {
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <Reveal>
           <div className="mb-6 flex items-center justify-center gap-2 text-[#FF4D00]">
-            <span className="text-xs">*</span>
+            <Sparkles className="h-4 w-4" />
             <span className="text-xs tracking-[0.3em] uppercase">{applyContent.recruitLabel}</span>
-            <span className="text-xs">*</span>
+            <Sparkles className="h-4 w-4" />
           </div>
 
           <h2 className="mb-4 text-4xl tracking-tight text-foreground dark:text-white sm:text-5xl md:text-7xl">
@@ -31,7 +32,7 @@ export function ApplySection() {
             className="inline-flex items-center gap-3 rounded-full bg-[#FF4D00] px-10 py-4 text-sm tracking-wider text-white uppercase shadow-lg transition-all duration-300 hover:bg-[#FF6A2B] hover:shadow-[#FF4D00]/20"
           >
             {applyContent.ctaLabel}
-            <span>{"->"}</span>
+            <ArrowRight className="h-5 w-5" />
           </a>
 
           <p className="mt-6 text-xs text-muted-foreground dark:text-gray-600">{applyContent.period}</p>

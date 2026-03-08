@@ -1,5 +1,16 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { Code, LayoutTemplate, Server, Database, PenTool, Bot } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { curriculumContent } from "@/content/landing";
+
+const TRACK_ICONS: Record<string, LucideIcon> = {
+  "HTML/CSS & JS": Code,
+  "React & Frontend": LayoutTemplate,
+  "Python & Django": Server,
+  "Database & API": Database,
+  "UI/UX Design": PenTool,
+  "AI Convergence": Bot,
+};
 
 export function CurriculumSection() {
   return (
@@ -33,22 +44,25 @@ export function CurriculumSection() {
                 </header>
 
                 <div className="space-y-3">
-                  {group.items.map((item) => (
-                    <article
-                      key={item.title}
-                      className="group rounded-xl border border-border bg-background p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#FF4D00]/30 dark:border-white/8 dark:bg-black/20"
-                    >
-                      <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#FF4D00]/6 text-muted-foreground transition-colors duration-300 group-hover:text-[#FF4D00] dark:text-gray-500">
-                        <span className="text-xs">*</span>
-                      </div>
-                      <h4 className="mb-2 text-sm font-semibold text-foreground transition-colors duration-300 group-hover:text-[#FF4D00] dark:text-white">
-                        {item.title}
-                      </h4>
-                      <p className="text-xs leading-relaxed text-muted-foreground dark:text-gray-400">
-                        {item.desc}
-                      </p>
-                    </article>
-                  ))}
+                  {group.items.map((item) => {
+                    const Icon = TRACK_ICONS[item.title] || Code;
+                    return (
+                      <article
+                        key={item.title}
+                        className="group rounded-xl border border-border bg-background p-4 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#FF4D00]/30 dark:border-white/8 dark:bg-black/20"
+                      >
+                        <div className="mb-3 flex h-9 w-9 items-center justify-center rounded-lg bg-[#FF4D00]/6 text-muted-foreground transition-colors duration-300 group-hover:text-[#FF4D00] dark:text-gray-500">
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <h4 className="mb-2 text-sm font-semibold text-foreground transition-colors duration-300 group-hover:text-[#FF4D00] dark:text-white">
+                          {item.title}
+                        </h4>
+                        <p className="text-xs leading-relaxed text-muted-foreground dark:text-gray-400">
+                          {item.desc}
+                        </p>
+                      </article>
+                    )
+                  })}
                 </div>
               </section>
             </Reveal>

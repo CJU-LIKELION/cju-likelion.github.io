@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { ChevronDown } from "lucide-react";
 import { introContent } from "@/content/landing";
 
 export function IntroSection() {
@@ -59,7 +60,7 @@ export function IntroSection() {
             className="flex cursor-pointer flex-col items-center text-muted-foreground dark:text-gray-500 transition-colors hover:text-[#FF4D00]"
           >
             <span className="mb-2 text-[10px] tracking-[0.3em] uppercase">Scroll Down</span>
-            <span className="text-sm">v</span>
+            <ChevronDown className="h-5 w-5 animate-bounce" />
           </a>
         </Reveal>
       </div>

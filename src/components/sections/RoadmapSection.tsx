@@ -1,5 +1,15 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { Flag, TrendingUp, Lightbulb, Rocket, Globe } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { roadmapContent } from "@/content/landing";
+
+const PHASE_ICONS: Record<string, LucideIcon> = {
+  "The Beginning": Flag,
+  "Growth": TrendingUp,
+  "Ideathon": Lightbulb,
+  "Hackathon": Rocket,
+  "Expansion": Globe,
+};
 
 export function RoadmapSection() {
   return (
@@ -84,14 +94,16 @@ export function RoadmapSection() {
 
                   <div className="absolute top-0 left-0 z-10 md:left-1/2 md:-translate-x-1/2">
                     <div
-                      className="flex h-8 w-8 items-center justify-center rounded-full border-2"
+                      className="flex h-8 w-8 items-center justify-center rounded-full border-2 bg-card"
                       style={{
-                        backgroundColor: "var(--card)",
                         borderColor: item.color,
                         color: item.color,
                       }}
                     >
-                      <span className="text-xs">*</span>
+                      {(() => {
+                        const Icon = PHASE_ICONS[item.title] || Flag;
+                        return <Icon className="h-4 w-4" />;
+                      })()}
                     </div>
                   </div>
 

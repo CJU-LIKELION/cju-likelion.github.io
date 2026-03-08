@@ -1,5 +1,15 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { Telescope, BookOpen, Share2, Wrench, Flame } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { visionContent } from "@/content/landing";
+
+const PILLAR_ICONS: Record<string, LucideIcon> = {
+  Discover: Telescope,
+  Learn: BookOpen,
+  Share: Share2,
+  Build: Wrench,
+  Impact: Flame,
+};
 
 export function VisionSection() {
   return (
@@ -24,19 +34,22 @@ export function VisionSection() {
           <div className="absolute top-[1.75rem] left-[10%] right-[10%] hidden h-px bg-border dark:bg-[#FF4D00]/30 md:block" />
 
           <div className="grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-4">
-            {visionContent.pillars.map((pillar) => (
-              <Reveal key={pillar.label} className="flex flex-col items-center text-center">
-                <div className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-muted-foreground dark:border-gray-700 dark:bg-[#0A0A0A] dark:text-gray-500 transition-all duration-300">
-                  <span className="text-xs">*</span>
-                </div>
-                <h3 className="mb-2 text-sm tracking-wider text-foreground dark:text-white uppercase transition-colors">
-                  {pillar.label}
-                </h3>
-                <p className="whitespace-pre-line text-xs leading-relaxed text-muted-foreground dark:text-gray-500">
-                  {pillar.desc}
-                </p>
-              </Reveal>
-            ))}
+            {visionContent.pillars.map((pillar) => {
+              const Icon = PILLAR_ICONS[pillar.label] || Telescope;
+              return (
+                <Reveal key={pillar.label} className="flex flex-col items-center text-center">
+                  <div className="relative z-10 mb-4 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-card text-muted-foreground dark:border-gray-700 dark:bg-[#0A0A0A] dark:text-gray-500 transition-all duration-300">
+                    <Icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="mb-2 text-sm tracking-wider text-foreground dark:text-white uppercase transition-colors">
+                    {pillar.label}
+                  </h3>
+                  <p className="whitespace-pre-line text-xs leading-relaxed text-muted-foreground dark:text-gray-500">
+                    {pillar.desc}
+                  </p>
+                </Reveal>
+              )
+            })}
           </div>
         </div>
       </div>

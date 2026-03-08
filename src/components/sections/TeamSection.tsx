@@ -1,4 +1,5 @@
 import { Reveal } from "@/components/motion/Reveal";
+import { User, Users } from "lucide-react";
 import { teamContent } from "@/content/landing";
 
 function MemberCard({ name, role, desc }: { name: string; role?: string; desc: string }) {
@@ -6,7 +7,7 @@ function MemberCard({ name, role, desc }: { name: string; role?: string; desc: s
     <article className="group rounded-xl border border-border bg-card p-5 transition-all duration-300 hover:border-[#FF4D00]/30 dark:border-white/5 dark:bg-white/[0.02]">
       <div className="mb-3 flex items-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#FF4D00]/10 text-[#FF4D00]">
-          <span className="text-xs">*</span>
+          <User className="h-5 w-5" />
         </div>
         <div>
           <h4 className="text-sm text-foreground dark:text-white">{name}</h4>
@@ -50,7 +51,9 @@ export function TeamSection() {
             <Reveal key={department.name}>
               <section>
                 <div className="mb-4 flex items-center gap-2 border-b border-border pb-2 dark:border-white/5">
-                  <span className="text-xs text-[#FF4D00]">*</span>
+                  <span className="text-xs text-[#FF4D00]">
+                    <Users className="h-4 w-4" />
+                  </span>
                   <h3 className="text-sm tracking-wider text-foreground dark:text-white">{department.name}</h3>
                 </div>
                 <div className="space-y-3">
