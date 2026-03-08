@@ -1,0 +1,43 @@
+name: Block PRs from main
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+permissions:
+  pull-requests: write
+
+jobs:
+  block-main-source-pr:
+    if: github.event.pull_request.head.ref == 'main' && github.event.pull_request.base.ref != 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment and close PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+
+            await github.rest.issues.createComment({
+              owner,
+              repo,
+              issue_number: prNumber,
+              body: [
+                "This pull request was closed automatically.",
+                "",
+                "Policy: Pull requests with source branch `main` to another branch are not allowed."
+              ].join("\n")
+            });
+
+            await github.rest.pulls.update({
+              owner,
+              repo,
+              pull_number: prNumber,
+              state: "closed"
+            });
