@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const SECTION_IDS = ["intro", "vision", "about", "team", "curriculum", "cup-to-lion", "roadmap", "apply"];
+const SECTION_IDS = ["intro", "vision", "about", "curriculum", "cup-to-lion", "roadmap", "apply"];
 const HEADER_HEIGHT = 64;
 
 test("sections exist", async ({ page }) => {

@@ -40,7 +40,7 @@ export function SiteHeader({ onNavigate }: SiteHeaderProps) {
           }}
           className="font-black tracking-wide"
         >
-          LIKELION <span className="text-primary">CJU</span>
+          CJU <span className="text-primary">LIKELION</span>
         </a>
       </div>
     </header>

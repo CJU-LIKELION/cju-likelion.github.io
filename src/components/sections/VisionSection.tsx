@@ -33,7 +33,7 @@ export function VisionSection() {
         <div className="relative mx-auto max-w-5xl">
           <div className="absolute top-[1.75rem] left-[10%] right-[10%] hidden h-px bg-border dark:bg-[#FF4D00]/30 md:block" />
 
-          <div className="grid grid-cols-2 gap-6 md:grid-cols-5 md:gap-4">
+          <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-4">
             {visionContent.pillars.map((pillar) => {
               const Icon = PILLAR_ICONS[pillar.label] || Telescope;
               return (
@@ -44,7 +44,7 @@ export function VisionSection() {
                   <h3 className="mb-2 text-sm tracking-wider text-foreground dark:text-white uppercase transition-colors">
                     {pillar.label}
                   </h3>
-                  <p className="whitespace-pre-line text-xs leading-relaxed text-muted-foreground dark:text-gray-500">
+                  <p className="whitespace-normal text-xs leading-relaxed text-muted-foreground break-keep [overflow-wrap:anywhere] dark:text-gray-500">
                     {pillar.desc}
                   </p>
                 </Reveal>

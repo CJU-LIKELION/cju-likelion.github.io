@@ -8,7 +8,7 @@ type DotNavProps = {
 
 export function DotNav({ activeId, onNavigate }: DotNavProps) {
   return (
-    <nav className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
+    <nav className="fixed right-2 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
       <ul className="flex flex-col items-end gap-3">
         {navigationItems.map((item) => {
           const isActive = item.id === activeId;
@@ -25,7 +25,7 @@ export function DotNav({ activeId, onNavigate }: DotNavProps) {
               >
                 <span
                   className={cn(
-                    "absolute right-full mr-3 whitespace-nowrap text-sm font-medium transition-all duration-300",
+                    "absolute right-full mr-3 max-w-40 whitespace-normal text-right text-sm font-medium transition-all duration-300 break-keep [overflow-wrap:anywhere]",
                     isActive
                       ? "translate-x-0 opacity-100 text-foreground"
                       : "pointer-events-none translate-x-2 opacity-0 text-muted-foreground group-hover:translate-x-0 group-hover:opacity-100 group-hover:text-foreground/70"
