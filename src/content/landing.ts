@@ -2,9 +2,8 @@ export type SectionId =
   | "intro"
   | "vision"
   | "about"
-  | "team"
+  | "class"
   | "curriculum"
-  | "cup-to-lion"
   | "roadmap"
   | "apply";
 
@@ -18,7 +17,6 @@ type IntroContent = {
   titleTop: string;
   titleAccent: string;
   descriptionTop: string;
-  descriptionStrong: string;
   descriptionBottom: string;
   backgroundImage: string;
   primaryCta: {
@@ -47,25 +45,6 @@ type AboutContent = {
   stats: Array<{
     value: string;
     label: string;
-  }>;
-};
-
-type TeamContent = {
-  label: string;
-  titleTop: string;
-  titleAccent: string;
-  subtitle: string;
-  leaders: Array<{
-    name: string;
-    role: string;
-    desc: string;
-  }>;
-  departments: Array<{
-    name: string;
-    members: Array<{
-      name: string;
-      desc: string;
-    }>;
   }>;
 };
 
@@ -128,9 +107,8 @@ export const navigationItems: NavigationItem[] = [
   { id: "intro", label: "Home" },
   { id: "vision", label: "Vision" },
   { id: "about", label: "About" },
-  { id: "team", label: "Team" },
-  { id: "curriculum", label: "Class" },
-  { id: "cup-to-lion", label: "Cup to Lion" },
+  { id: "class", label: "Class" },
+  { id: "curriculum", label: "Curriculum" },
   { id: "roadmap", label: "Schedule" },
   { id: "apply", label: "Apply" },
 ];
@@ -139,38 +117,35 @@ export const sectionOrder: SectionId[] = [
   "intro",
   "vision",
   "about",
-  "team",
+  "class",
   "curriculum",
-  "cup-to-lion",
   "roadmap",
   "apply",
 ];
 
 export const introContent: IntroContent = {
-  badge: "LIKELION 14TH GENERATION @ CJU",
+  badge: "LIKELION 14TH GENERATION WITH CJU",
   titleTop: "BUILD YOUR",
   titleAccent: "OWN UNIVERSE",
-  descriptionTop: "가능성을 현실로, 13기를 넘어 14기로.",
-  descriptionStrong: "청주대학교 멋쟁이사자처럼",
-  descriptionBottom: "이 14기 아기사자를 기다립니다.",
+  descriptionTop: "\"당신의 상상, 세상 밖으로!\"",
+  descriptionBottom: "전국 80여개 대학이 함께하는 국내 최대 규모 IT 창업 동아리",
   backgroundImage:
-    "https://images.unsplash.com/photo-1738255654134-1877cb984a8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwY29kaW5nJTIwbGFwdG9wJTIwc2NyZWVuJTIwcHJvZ3JhbW1pbmd8ZW58MXx8fHwxNzcyMjk3NDU0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    `${import.meta.env.BASE_URL}images/hackathon_12th_3.png`,
   primaryCta: {
-    label: "Apply Now",
+    label: "지금 신청하기",
     targetId: "apply" as SectionId,
   },
 };
 
 export const visionContent: VisionContent = {
   label: "Our Vision",
-  titleTop: "함께 자라나는 즐거움,",
-  titleAccent: "실패를 두려워하지 않는 도전",
+  titleTop: "소통으로 하나 되어,",
+  titleAccent: "함께 만들어가는 가능성",
   pillars: [
-    { label: "Discover", desc: "나만의 가능성을\n발견하세요" },
-    { label: "Learn", desc: "체계적인 커리큘럼으로\n성장하세요" },
-    { label: "Share", desc: "지식과 경험을\n공유하세요" },
-    { label: "Build", desc: "아이디어를\n현실로 만드세요" },
-    { label: "Impact", desc: "세상을 바꾸는\n임팩트를 만드세요" },
+    { label: "Connection", desc: "다양한 전공과 배경을 가진 아기사자들이 만나 서로의 생각과 경험을 나누며 새로운 가능성을 발견하는 연결의 장을 만듭니다." },
+    { label: "Exploration", desc: "기존 서비스 분석과 아이디어 탐색 활동을 통해 다양한 문제를 바라보고 새로운 관점과 해결 방식을 탐구합니다." },
+    { label: "Synergy", desc: "서로 다른 생각과 능력이 만나 혼자서는 만들 수 없는 새로운 결과를 만들어냅니다." },
+    { label: "Creation", desc: "아이디어를 실제 프로덕트로 구현해보는 과정을 통해 실행 중심의 경험을 쌓고 해커톤과 프로젝트에 도전할 수 있는 기반을 만듭니다." },
   ],
 };
 
@@ -178,53 +153,18 @@ export const aboutContent: AboutContent = {
   label: "About Us",
   titleTop: "청주대학교",
   titleAccent: "멋쟁이사자처럼",
-  imageUrl:
-    "https://images.unsplash.com/photo-1646579886741-12b59840c63f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx1bml2ZXJzaXR5JTIwc3R1ZGVudHMlMjB0ZWFtJTIwY29sbGFib3JhdGlvbiUyMHdvcmtzcGFjZXxlbnwxfHx8fDE3NzIyOTc0NTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  imageUrl: `${import.meta.env.BASE_URL}images/cju_likelion_group_photo.jpg`,
   imageAlt: "Team Collaboration",
   paragraphs: [
-    "멋쟁이사자처럼 대학은 전국 70개 대학이 함께하는 AI/IT 연합 동아리입니다.",
-    "IT와 AI에 대한 관심을 나누고, 함께 소통하며 성장합니다. 코딩이 처음인 분도, 이미 경험이 있는 분도 모두 환영합니다. 우리는 함께 배우고, 함께 만들고, 함께 성장하는 커뮤니티입니다.",
+    "\"머리 속 상상을 현실로 만들어내는 경험\"을 돕는 것이 청대멋사의 목표입니다.",
     "14기에서는 프론트엔드, 백엔드, 기획/디자인 트랙으로 나뉘어 체계적인 스터디를 진행하며, 중앙 해커톤, 아이디어톤, 연합 해커톤 등 다양한 활동에 참여합니다.",
+    "청대멋사만의 활동인 \"Cup To Lion\"으로 아기사자들의 성장을 돕습니다.",
   ],
   stats: [
-    { value: "70+", label: "전국 참여 대학" },
-    { value: "5,000+", label: "전국 활동 멤버" },
+    { value: "80+", label: "전국 참여 대학" },
+    { value: "2,000+", label: "전국 활동 멤버" },
     { value: "13", label: "역대 기수" },
     { value: "∞", label: "무한한 가능성" },
-  ],
-};
-
-export const teamContent: TeamContent = {
-  label: "Operating Staff",
-  titleTop: "14TH",
-  titleAccent: "CREW",
-  subtitle: "청주대학교 멋쟁이사자처럼 14기를 이끌어갈 운영진을 소개합니다.",
-  leaders: [
-    { name: "김재영", role: "대표", desc: "14기 방향성 제시 및 전체 운영 총괄" },
-    { name: "문태희", role: "부대표", desc: "각 부서 활동 관리 및 내부 운영 지원" },
-  ],
-  departments: [
-    {
-      name: "학술부",
-      members: [
-        { name: "조완수", desc: "정기 세션 및 커리큘럼 로드맵 관리·아기사자 학습 자료 검토" },
-        { name: "고성노", desc: "정기 세션 및 공식 GitHub 운영, 과제 관리·기술 멘토링 총괄" },
-      ],
-    },
-    {
-      name: "기획부",
-      members: [
-        { name: "박세령", desc: "동아리 행사 및 프로젝트 전략 기획•운영 총괄" },
-        { name: "홍지우", desc: "동아리 핵심 행사 기획 총괄 및 프로젝트 기획 리드" },
-      ],
-    },
-    {
-      name: "홍보부",
-      members: [
-        { name: "서우진", desc: "홍보 콘텐츠 기획 및 제작 총괄" },
-        { name: "전예원", desc: "홍보 콘텐츠 기획 및 SNS 채널 운영" },
-      ],
-    },
   ],
 };
 
@@ -252,8 +192,8 @@ export const curriculumContent: CurriculumContent = {
       subtitle: "Backend Track",
       items: [
         {
-          title: "Python & Django",
-          desc: "파이썬 기초부터 장고 프레임워크를 활용한 백엔드 서버 구축 과정을 다룹니다.",
+          title: "Spring Boot",
+          desc: "Java와 Spring Boot를 활용한 서버 개발을 학습합니다. API 설계, 데이터베이스, JPA까지 백엔드 전반을 학습합니다.",
         },
         {
           title: "Database & API",
@@ -307,19 +247,19 @@ export const roadmapContent: RoadmapContent = {
       period: "5월",
       title: "Ideathon",
       color: "#FBBF24",
-      items: ["무박 2일 아이디어 해커톤", "팀 빌딩 및 아이디어 구체화", "현직자 멘토링"],
+      items: ["아이디어 해커톤", "팀 빌딩 및 아이디어 구체화", "현직자 멘토링"],
     },
     {
       period: "7월 ~ 8월",
       title: "Hackathon",
       color: "#FF4D00",
-      items: ["중앙 해커톤", "여름방학 집중 개발 기간", "실전 서비스 배포 경험"],
+      items: ["무박 2일 중앙 해커톤", "여름방학 집중 개발 기간", "실전 서비스 배포 경험"],
     },
     {
       period: "9월 ~ 12월",
       title: "Expansion",
       color: "#A78BFA",
-      items: ["연합 해커톤 (충청권)", "기업 연계 프로젝트", "최종 성과 공유회 (Demoday)"],
+      items: ["권역별 해커톤 (충청권)", "최종 성과 공유회 (Demoday)"],
     },
   ],
 };
@@ -335,7 +275,7 @@ export const cupToLionContent: CupToLionContent = {
     {
       step: "Step 1",
       title: "실제 앱 분석 및 연구",
-      desc: "시중에 나와있는 앱들을 다양한 관점으로 분석하고 공유합니다.",
+      desc: "출시된 앱들을 다양한 관점으로 분석하고 공유합니다.",
       color: "#4ADE80",
       icon: "search",
     },
@@ -362,11 +302,10 @@ export const applyContent: ApplyContent = {
   titleAccent: "US",
   ctaLabel: "14기 지원하러 가기",
   ctaHref: "https://forms.gle/7M8Dfxv63tGuSEJ56",
-  period: "모집 기간: 2026.03.02 ~ 2026.03.09",
+  period: "모집 기간: 2026.03.02 ~ 2026.03.14",
 };
 
 export const socialLinks: SocialLink[] = [
-  { label: "Instagram", href: "#" },
-  { label: "Globe", href: "#" },
-  { label: "Github", href: "#" },
+  { label: "Instagram", href: "https://www.instagram.com/likelion_cju/" },
+  { label: "Github", href: "https://github.com/CJU-LIKELION" },
 ];

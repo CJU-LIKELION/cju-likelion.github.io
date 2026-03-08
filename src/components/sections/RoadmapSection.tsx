@@ -30,13 +30,16 @@ export function RoadmapSection() {
         </Reveal>
 
         <div className="relative mx-auto max-w-4xl">
-          <div className="absolute top-0 bottom-0 left-4 w-px bg-gradient-to-b from-transparent via-border to-transparent dark:via-white/10 md:hidden" />
+          <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-border to-transparent dark:via-white/10 md:hidden" />
 
           <div className="relative z-10 space-y-8">
-            {roadmapContent.items.map((item, index) => (
-              <Reveal key={`${item.period}-${item.title}`}>
-                <article
-                  className={`relative flex items-start gap-6 md:gap-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+            {roadmapContent.items.map((item, index) => {
+              const Icon = PHASE_ICONS[item.title] || Flag;
+
+              return (
+                <Reveal key={`${item.period}-${item.title}`}>
+                  <article
+                  className={`relative flex flex-col items-center gap-4 md:items-start md:gap-0 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                     }`}
                 >
                   {/* Desktop Connection Line SVG */}
@@ -64,8 +67,20 @@ export function RoadmapSection() {
                     </div>
                   )}
 
+                  <div className="relative z-10 md:absolute md:top-0 md:left-1/2 md:-translate-x-1/2">
+                    <div
+                      className="flex h-8 w-8 items-center justify-center rounded-full border-2 bg-card"
+                      style={{
+                        borderColor: item.color,
+                        color: item.color,
+                      }}
+                    >
+                      <Icon className="h-4 w-4" />
+                    </div>
+                  </div>
+
                   <div
-                    className={`pl-10 md:w-[calc(50%-2rem)] md:pl-0 ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8 md:text-left"
+                    className={`relative z-10 bg-background px-4 py-2 text-center md:bg-transparent md:p-0 md:w-[calc(50%-2rem)] ${index % 2 === 0 ? "md:pr-8 md:text-right" : "md:pl-8 md:text-left"
                       }`}
                   >
                     <span
@@ -75,42 +90,25 @@ export function RoadmapSection() {
                       {item.period}
                     </span>
                     <h3 className="mb-3 text-lg text-foreground dark:text-white md:text-xl">{item.title}</h3>
-                    <ul className="space-y-1.5">
+                    <ul className="space-y-1.5 flex flex-col items-center md:items-stretch">
                       {item.items.map((desc) => (
                         <li
                           key={desc}
-                          className="flex items-center gap-2 text-xs text-muted-foreground dark:text-gray-500"
-                          style={{
-                            justifyContent: index % 2 === 0 ? "flex-end" : "flex-start",
-                          }}
+                          className={`flex items-center gap-2 text-xs text-muted-foreground dark:text-gray-500 justify-center ${index % 2 === 0 ? "md:justify-end" : "md:justify-start"
+                            }`}
                         >
-                          <span className="hidden h-1 w-1 shrink-0 rounded-full bg-muted-foreground dark:bg-gray-600 md:inline" />
+                          <span className="hidden h-1 w-1 shrink-0 rounded-full bg-muted-foreground dark:bg-gray-600 md:inline-block" />
                           <span>{desc}</span>
-                          <span className="order-first h-1 w-1 shrink-0 rounded-full bg-muted-foreground dark:bg-gray-600 md:hidden" />
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  <div className="absolute top-0 left-0 z-10 md:left-1/2 md:-translate-x-1/2">
-                    <div
-                      className="flex h-8 w-8 items-center justify-center rounded-full border-2 bg-card"
-                      style={{
-                        borderColor: item.color,
-                        color: item.color,
-                      }}
-                    >
-                      {(() => {
-                        const Icon = PHASE_ICONS[item.title] || Flag;
-                        return <Icon className="h-4 w-4" />;
-                      })()}
-                    </div>
-                  </div>
-
                   <div className="hidden md:block md:w-[calc(50%-2rem)]" />
-                </article>
-              </Reveal>
-            ))}
+                  </article>
+                </Reveal>
+              );
+            })}
           </div>
         </div>
       </div>

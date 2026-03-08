@@ -8,7 +8,7 @@ type DotNavProps = {
 
 export function DotNav({ activeId, onNavigate }: DotNavProps) {
   return (
-    <nav className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
+    <nav aria-label="Primary" className="fixed right-2 top-1/2 z-40 hidden -translate-y-1/2 lg:block">
       <ul className="flex flex-col items-end gap-3">
         {navigationItems.map((item) => {
           const isActive = item.id === activeId;

@@ -31,7 +31,7 @@ export function IntroSection() {
             {introContent.badge}
           </span>
 
-          <h1 className="mb-8 text-5xl font-bold tracking-tight text-foreground dark:text-white sm:text-6xl md:text-8xl lg:text-9xl">
+          <h1 className="mb-8 text-5xl font-black tracking-tight text-foreground dark:text-white sm:text-6xl md:text-8xl lg:text-9xl">
             {introContent.titleTop}
             <br />
             <span className="text-[#FF4D00]">
@@ -40,16 +40,15 @@ export function IntroSection() {
           </h1>
 
           <p className="mx-auto mb-12 max-w-xl text-base leading-relaxed text-muted-foreground dark:text-gray-400 sm:text-lg md:text-xl">
-            {introContent.descriptionTop}
+            <span className="text-foreground dark:text-white">{introContent.descriptionTop}</span>
             <br />
-            <span className="text-foreground dark:text-white">{introContent.descriptionStrong}</span>
             {introContent.descriptionBottom}
           </p>
 
           <div className="mb-20 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
               href={`#${introContent.primaryCta.targetId}`}
-              className="inline-flex cursor-pointer rounded-full bg-[#FF4D00] px-8 py-3.5 text-sm tracking-wider text-white uppercase transition-all duration-300 hover:bg-[#FF6A2B] hover:shadow-lg hover:shadow-[#FF4D00]/20"
+              className="inline-flex cursor-pointer rounded-full bg-[#FF4D00] px-8 py-3.5 text-sm font-bold tracking-wider text-white uppercase transition-all duration-300 hover:bg-[#FF6A2B] hover:shadow-lg hover:shadow-[#FF4D00]/20"
             >
               {introContent.primaryCta.label}
             </a>

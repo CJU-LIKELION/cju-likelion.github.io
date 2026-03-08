@@ -6,7 +6,6 @@ import { CupToLionSection } from "@/components/sections/CupToLionSection";
 import { CurriculumSection } from "@/components/sections/CurriculumSection";
 import { IntroSection } from "@/components/sections/IntroSection";
 import { RoadmapSection } from "@/components/sections/RoadmapSection";
-import { TeamSection } from "@/components/sections/TeamSection";
 import { VisionSection } from "@/components/sections/VisionSection";
 import { DotNav } from "@/components/site/DotNav";
 import { SiteFooter } from "@/components/site/SiteFooter";
@@ -46,14 +45,13 @@ export function LandingPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <SiteHeader activeId={activeId} onNavigate={handleNavigate} />
+      <SiteHeader onNavigate={handleNavigate} />
       <DotNav activeId={activeId} onNavigate={handleNavigate} />
 
       <main>
         <IntroSection />
         <VisionSection />
         <AboutSection />
-        <TeamSection />
         <CurriculumSection />
         <CupToLionSection />
         <RoadmapSection />

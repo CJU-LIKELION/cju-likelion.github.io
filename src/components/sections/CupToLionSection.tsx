@@ -12,7 +12,7 @@ const STEP_ICONS: Record<string, LucideIcon> = {
 
 export function CupToLionSection() {
   return (
-    <section id="cup-to-lion" className="min-h-screen bg-background px-5 py-24 md:py-32">
+    <section id="curriculum" className="min-h-screen bg-background px-5 py-24 md:py-32">
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <div className="mx-auto mb-16 max-w-3xl text-center">
